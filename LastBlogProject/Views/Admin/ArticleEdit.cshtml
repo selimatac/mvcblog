@@ -1,0 +1,52 @@
+﻿<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+@model Articles
+
+@{
+    ViewBag.Title = "ArticleCreate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@using (Html.BeginForm("ArticleEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        @Html.HiddenFor(x=> x.ArticleID)
+        <div class="col-md-8">
+            <div class="card my-8">
+                <h5 class="card-header">Yeni Makale Ekle</h5>
+                <div class="card-body">
+                    @Html.TextBoxFor(x => x.Title, new { @class = "form-control form-control-lg", @placeholder = "Başlık", @style = "margin-bottom:20px" })
+                    @Html.TextAreaFor(x => x.PostContent, new { @class = "form-control", @placeholder = "Başlık", @name = "editor1", @id = "editor1", @rows = "10", @cols = "80" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card my-4">
+                <h5 class="card-header">Kategori Seçin</h5>
+                <div class="card-body">
+                    @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="card my-4">
+                <h5 class="card-header">Ön Görsel Seçin</h5>
+                <div class="card-body">
+                    @Html.HiddenFor(model=>model.FeaturedImage)
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="ImageFile" name="ImageFile">
+                        <label class="custom-file-label" for="customFile">Ön görsel seçin</label>
+                    </div>
+                    <div class="image-preview">
+                        <img src="@Model.FeaturedImage" />
+                    </div>
+                </div>
+            </div>
+            <div class="card my-4">
+                <h5 class="card-header">Hazırsa yayınla</h5>
+                <div class="card-body">
+                    <div class="custom-file">
+                        <button class="btn btn-primary btn-lg btn-block">Yayınla</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

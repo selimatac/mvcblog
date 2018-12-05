@@ -1,0 +1,44 @@
+﻿@model List<Articles>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="panel-heading">Makaleler</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Başlık</th>
+            <th>İçerik</th>
+            <th>Kategori</th>
+            <th>Tarih</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>
+                    @if (@item.PostContent.Length > 150)
+                    {
+                        @Html.Raw(item.PostContent.Substring(0, 149))
+                    }
+                    else
+                    {
+                        @Html.Raw(item.PostContent)
+                    }
+                </td>
+                <td>@item.Categories.CategoryName</td>
+                <td>@item.CreatedDate</td>
+                <td><a class="btn btn-danger" onclick="" href="/Admin/ArticleEdit/@item.ArticleID">Düzenle</a></td>
+                <td><a class="btn btn-warning" id="deleteBtn" href="/Admin/DeleteArticle/@item.ArticleID">Sil</a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+

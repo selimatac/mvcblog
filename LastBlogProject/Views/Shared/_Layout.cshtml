@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewBag.Title - Start Bootstrap Template</title>
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/notify.min.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="~/Content/blog-home.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="    box-shadow: 0px 3px 25px -8px #000;">
+        <div class="container">
+            @Html.ActionLink("Selim ATAÇ Blog", "Index", null, new { @class = "navbar-brand" })
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+
+                        @*@Html.ActionLink("Anasayfa", "Index", "Home", new { @class = "nav-link" })*@
+
+                        <span class="sr-only">(current)</span>
+
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Kategoriler
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                            @{Html.RenderAction("MenuCategories", "Home");}
+
+                        </div>
+                    </li>
+                    @if (Session["oturum"] == null)
+                    {
+                        <li class="nav-item">
+                            @Html.ActionLink("Giriş yap", "Login", "Home", null, new { @class = "nav-link btn btn-outline-light btn-sm menu-buttons" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Kayıt Ol", "SignUp", "Home", null, new { @class = "nav-link btn btn-outline-light btn-sm menu-buttons" })
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            @Html.ActionLink("Yönetim Paneli", "Index", "Admin", null, new { @class = "nav-link" })
+                        </li>
+                        @*<li class="nav-item">
+                                @Html.ActionLink(Session["oturum"].ToString(), null, null, new { @class = "nav-link", @style = "text-transform:capitalize" })
+                            </li>*@
+                        <li class="nav-item">
+                            @Html.ActionLink("Çıkış yap", "Logout", null, new { @class = "nav-link" })
+                        </li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <!-- Blog Entries Column -->
+            <div class="col-md-8 ss-content-row">
+                @*<h1 class="my-4">
+                        Makaleler
+                        <small>MVC Blog Sitesi Projesi</small>
+                    </h1>*@
+                <!-- Blog Post -->
+                @RenderBody()
+                <!-- Pagination -->
+                @*<ul class="pagination justify-content-center mb-4">
+                        <li class="page-item">
+                            <a class="page-link" href="#">&larr; Older</a>
+                        </li>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">Newer &rarr;</a>
+                        </li>
+                    </ul>*@
+            </div>
+            <!-- Sidebar Widgets Column -->
+            <div class="col-md-4">
+                <!-- Search Widget -->
+                <div class="card my-4">
+                    <h5 class="card-header">Arama</h5>
+                    <div class="card-body">
+                        @using (Html.BeginForm("SearchResults", "Home", FormMethod.Get))
+                        {
+                            <div class="input-group">
+                                <input id="search" name="search" type="text" class="form-control" placeholder="Birşeyler arayın...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-secondary" type="submit">Ara!</button>
+                                </span>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <!-- Categories Widget -->
+                <div class="card my-4">
+                    <h5 class="card-header">Kategoriler</h5>
+                    <div class="row">
+                        <div class="col-lg-12 kategori-widget">
+
+                            @Html.Action("CategoriList", "Home")
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Side Widget -->
+                <div class="card my-4 sticky_sidebar">
+                    <h5 class="card-header">Side Widget</h5>
+                    <div class="card-body">
+                        You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/jquery.sticky-kit.min.js"></script>
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+    <script src="~/Scripts/jquery-notify.min.js"></script>
+    <script src="~/Scripts/main.js"></script>
+</body>
+</html>

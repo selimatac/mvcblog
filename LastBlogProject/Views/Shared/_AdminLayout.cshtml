@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewBag.Title - Start Bootstrap Template</title>
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/notify.min.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    <link href="~/Content/blog-home.css" rel="stylesheet" />
+    <link href="~/Content/summernote/summernote-bs4.css" rel="stylesheet" />
+
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background:#563D7C; box-shadow: 0px 3px 25px -8px #000;">
+        <div class="container">
+            @Html.ActionLink("Yönetim Paneli", "Index", null, new { @class = "navbar-brand" })
+            <a href="/Home/Index" class="navbar-text" style="    border-left: 1px groove;padding-left: 15px;color: white;">Anasayfa</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <span class="sr-only">(current)</span>
+                    </li>
+                    @if (Session["oturum"] != null)
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Makale Yönetimi
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/Admin/Index">Makaleler</a>
+                                <a class="dropdown-item" href="/Admin/ArticleCreate">Yeni Ekle</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Kategori Yönetimi
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/Admin/Categories">Kategoriler</a>
+                                <a class="dropdown-item" href="/Admin/CreateCategory">Yeni Ekle</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Sayfa Yönetimi
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/Admin/Pages">Sayfalar</a>
+                                <a class="dropdown-item" href="/Admin/CreatePage">Yeni Ekle</a>
+                            </div>
+                        </li>
+                        <li class="nav-item ">
+                            @Html.ActionLink("Çıkış yap", "Logout", "Home", null, new { @class = "nav-link btn btn-outline-light btn-sm menu-buttons" })
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            @Html.ActionLink("Giriş yap", "Login", "Home", null, new { @class = "nav-link btn btn-outline-light btn-sm menu-buttons" })
+                        </li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <!-- Blog Entries Column -->
+            <div class="col-md-12 ss-content-row">
+                <!-- Blog Post -->
+                @RenderBody()
+
+            </div>
+            <!-- Sidebar Widgets Column -->
+
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+    <script src="~/Scripts/jquery.sticky-kit.min.js"></script>
+    <script src="~/Scripts/jquery-notify.min.js"></script>
+    <script src="~/Scripts/main.js"></script>
+
+
+
+
+</body>
+</html>

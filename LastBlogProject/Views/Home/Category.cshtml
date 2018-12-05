@@ -1,0 +1,30 @@
+﻿@model List<Articles>
+@{
+    ViewBag.Title = "Category";
+}
+
+
+@foreach (var item in Model)
+{
+    <div class="card mb-4">
+        <img class="card-img-top" src="@item.FeaturedImage" alt="Card image cap">
+        <div class="card-body">
+            <h2 class="card-title">@item.Title</h2>
+            <p class="card-text">
+                @if (@item.PostContent.Length > 150)
+                {
+                    @item.PostContent.Substring(0, 149)
+                }
+                else
+                {
+                    @item.PostContent
+                }
+            </p>
+            @Html.ActionLink("Devamını Oku →", "ArticleDetail", new { id = item.ArticleID }, new { @class = "btn btn-primary" })
+        </div>
+        <div class="card-footer text-muted">
+            Tarih: @item.CreatedDate, Yazar:
+            <a href="#">@item.Authors.Name</a>
+        </div>
+    </div>
+}

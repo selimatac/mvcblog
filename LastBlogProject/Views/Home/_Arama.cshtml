@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Articles>
+
+@using(Html.BeginForm("Index","Home", FormMethod.Get)) { 
+<div class="input-group">
+    @Html.TextBox("searching", new { @class = "form-control", @placeholder= "Birşeyler arayın..." })
+    <span class="input-group-btn">
+        <button class="btn btn-secondary" type="button">Ara!</button>
+    </span>
+</div>
+}

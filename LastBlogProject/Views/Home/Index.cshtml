@@ -1,0 +1,35 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<Articles>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@foreach (var item in Model)
+{
+    <div class="card mb-4">
+        <img class="card-img-top" src="@item.FeaturedImage" alt="@item.Title">
+        <div class="card-body">
+            <h2 class="card-title">@item.Title</h2>
+            <p class="card-text">
+                @if (@item.PostContent.Length > 150)
+                {
+                    @Html.Raw(item.PostContent.Substring(0, 149) + "...")
+                }
+                else
+                {
+                    @Html.Raw(item.PostContent)
+                }
+
+            </p>
+            @Html.ActionLink("Devamını Oku →", "ArticleDetail", new { id = item.ArticleID }, new { @class = "btn btn-primary" })
+        </div>
+        <div class="card-footer text-muted">
+            Tarih: @item.CreatedDate, Yazar:
+            <a href="#">@item.Authors.Name</a>
+        </div>
+    </div>
+}
+
+@Html.PagedListPager(Model, _sayfaNo => Url.Action("Index", "Home", new { SayfaNo = _sayfaNo }))

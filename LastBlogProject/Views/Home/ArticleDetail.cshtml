@@ -1,0 +1,98 @@
+﻿@model Articles
+@{
+    ViewBag.Title = "ArticleDetail";
+}
+
+
+<!-- Title -->
+<h1 class="mt-4">@Html.DisplayFor(x => x.Title)</h1>
+
+<!-- Author -->
+<p class="lead">
+    by
+    <a href="#">@Html.DisplayFor(x => x.Authors.Name)</a>
+</p>
+
+<hr>
+
+<!-- Date/Time -->
+<p>Tarih: @Html.DisplayFor(x => x.CreatedDate)</p>
+
+<hr>
+
+<!-- Preview Image -->
+<img class="img-fluid rounded" src="@Html.DisplayFor(x => x.FeaturedImage)" alt="">
+
+<hr>
+
+<!-- Post Content -->
+@Html.Raw(Model.PostContent)
+<hr>
+
+<!-- Comments Form -->
+
+<div class="card my-4">
+    <h5 class="card-header">Yorum Yap:</h5>
+    <div class="card-body">
+        @if (Session["oturum"] == null)
+        {
+            <form role="form">
+                <div class="form-group">
+                    <textarea class="form-control" rows="3" disabled></textarea>
+
+                </div>
+                <button type="submit" class="btn btn-primary" disabled>Yorum Yap</button> <span> Yorum yapmak için <a href="~/Home/Login">Giriş Yapın</a></span>
+            </form>
+        }
+        else
+        {
+            <form>
+                <div class="form-group">
+                    <textarea name="Comment" id="Yorum" class="form-control" rows="3"></textarea>
+                </div>
+                <button type="submit" id="yorumYap" class="btn btn-primary">Yorum Yap</button>
+            </form>
+        }
+
+    </div>
+
+</div>
+
+
+
+@{Html.RenderAction("MakaleyeGoreYorum", "Home");}
+
+
+
+
+@*<div class="media mb-4">
+        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+        <div class="media-body">
+            <h5 class="mt-0">@Html.DisplayFor(x => x.Authors.Name)</h5>
+            @Html.DisplayFor(x => x.Comments1.Comment)
+        </div>
+    </div>*@
+<link href="~/Content/bootstrap-notify.css" rel="stylesheet" />
+@*<link href="~/Content/notify.min.css" rel="stylesheet" />*@
+<script src="~/Content/vendor/jquery/jquery.min.js"></script>
+<script src="~/Scripts/bootstrap-notify.js"></script>
+@*<script src="~/Scripts/jquery-notify.min.js"></script>*@
+<script>
+    $(document).ready(function () {
+        $('#yorumYap').click(function () {
+            var yorumunuz = $('#Yorum').val();
+            $.ajax({
+                url: '/Admin/CommentCreate/',
+                data: { item:yorumunuz, makaleid:@Model.ArticleID },
+                type: 'POST',
+                dataType: 'json',
+                success: function (data) {
+                    $.notify({
+                        title: "Welcome:",
+                        message: "This plugin has been provided to you by Robert McIntosh aka mouse0270"
+                    });
+                }
+            })
+        })
+    })
+</script>

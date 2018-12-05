@@ -1,0 +1,18 @@
+﻿@model List<Categories>
+@{
+    Layout = null;
+}
+<ul class="list-group">
+    @foreach (var item in Model)
+    {
+        @*<li class="kategori-sidebar">@Html.ActionLink(item.CategoryName, "Category", new { id = item.CategoryID }, new { @class = "" })</li>*@
+
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            @Html.ActionLink(item.CategoryName, "Category", new { id = item.CategoryID }, new { @class = "" })
+            <span class="badge badge-primary badge-pill">
+                @item.Articles.Count(x=> x.CategoryId == item.CategoryID).ToString()
+            </span>
+        </li>
+
+    }
+</ul>

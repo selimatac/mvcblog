@@ -1,0 +1,26 @@
+﻿@model List<Articles>
+@{
+    ViewBag.Title = "SearchResults";
+}
+
+<h2 style="margin-bottom:20px;">Arama Sonuçları</h2>
+@foreach (var item in Model)
+{
+    @*Articles İtems For Search Results*@
+       <div class="card" style="width: 100%; margin-bottom:10px">
+        <div class="card-body">
+            <h5 class="card-title">@item.Title</h5>
+            <p class="card-text">
+                @if (@item.PostContent.Length > 150)
+                {
+                    @Html.Raw(item.PostContent.Substring(0, 149))
+                }
+                else
+                {
+                    @Html.Raw(item.PostContent)
+                }
+            </p>
+            <a href="/Home/ArticleDetail/@item.ArticleID" class="btn btn-default">Devamını oku →</a>
+        </div>
+    </div>
+}

@@ -1,0 +1,74 @@
+/*!
+ * Start Bootstrap - Blog Home (https://startbootstrap.com/template-overviews/blog-home)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-blog-home/blob/master/LICENSE)
+ */
+
+/*body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}*/
+
+.ss-content-row {
+    margin-top: 1.5rem !important;
+}
+
+.kategori-sidebar {
+    display: inline-block;
+    width: 49%;
+}
+
+.kategori-widget ul li {
+    border-left: none;
+    border-right: none;
+    border-radius: 0px !important;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+    .kategori-widget ul li:first-child {
+        border-top: none;
+    }
+
+    .kategori-widget ul li:last-child {
+        border-bottom: none;
+    }
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff;
+}
+
+.menu-buttons:hover {
+    color: #000 !important;
+}
+
+.menu-buttons {
+    margin-left: 10px;
+}
+
+.mb-8, .my-8 {
+    margin-bottom: 1.5rem !important;
+}
+
+.mt-8, .my-8 {
+    margin-top: 1.5rem !important;
+}
+
+.card-img-top {
+    height: 300px;
+    object-fit: cover;
+}
+
+.image-preview {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+    .image-preview img {
+        width: 100%;
+    }

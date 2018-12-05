@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1905cff1754e468fa62eef748215ba99" Name="Diagram1">
+        <EntityTypeShape EntityType="myBlogDbModel.Articles" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="myBlogDbModel.Authors" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="myBlogDbModel.Categories" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="myBlogDbModel.Comments" Width="1.5" PointX="7.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="myBlogDbModel.Pages" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="myBlogDbModel.Roles" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="myBlogDbModel.FK_Articles_Authors" ManuallyRouted="false" />
+        <AssociationConnector Association="myBlogDbModel.FK_Articles_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="myBlogDbModel.FK_Comments_Articles" ManuallyRouted="false" />
+        <AssociationConnector Association="myBlogDbModel.FK_Authors_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="myBlogDbModel.FK_Comments_Authors" ManuallyRouted="false" />
+        <AssociationConnector Association="myBlogDbModel.FK_Pages_Authors" ManuallyRouted="false" />
+        <AssociationConnector Association="myBlogDbModel.FK_Articles_Comments" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
