@@ -83,7 +83,10 @@
             var yorumunuz = $('#Yorum').val();
             $.ajax({
                 url: '/Admin/CommentCreate/',
-                data: { item:yorumunuz, makaleid:@Model.ArticleID },
+                data: {
+                    item: yorumunuz,
+                    makaleid:@Model.ArticleID
+                    },
                 type: 'POST',
                 dataType: 'json',
                 success: function (data) {
